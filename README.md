@@ -15,3 +15,65 @@ See [Project tab](https://github.com/elsstrange/MakersBnB/projects/1).
 ## Set Up
 
 ## Deployed App
+
+## Design Notes
+
+### CRCs
+
+**User** 
+| Responsibilities | Collaborators |
+| --- | --- |
+| username<br>password<br>email<br>phone |  |
+
+**Space** 
+| Responsibilities | Collaborators |
+| --- | --- |
+| name<br>price<br>description | User (as host) |
+
+**Inventory** 
+| Responsibilities | Collaborators |
+| --- | --- |
+| date<br>availability | Space |
+
+**Booking** 
+| Responsibilities | Collaborators |
+| --- | --- |
+| date | User (as guest)<br>Space<br>Status |
+
+**Status** 
+| Responsibilities | Collaborators |
+| --- | --- |
+| name |  |
+
+
+### Schema
+
+**users** 
+| id | username | email | phone | password |
+| --- | --- | --- | --- | --- |
+| SERIAL | VARCHAR(20) | VARCHAR(100) | VARCHAR (13) | VARCHAR(?) |
+| PK | UNIQUE NOT NULL | UNIQUE NOT NULL | | NOT NULL |
+
+**spaces** 
+| id | name | description | price | host_id |
+| --- | --- | --- | --- | --- |
+| SERIAL | VARCHAR(60) | VARCHAR(500) | INT NOT NULL | INT |
+| PK | NOT NULL | | NOT NULL | FK (users id) NOT NULL |
+
+**inventories** 
+| id | date | available | space_id |
+| --- | --- | --- | --- |
+| SERIAL | DATE | BOOLEAN | INT |
+| PK | NOT NULL | NOT NULL | FK (spaces id) NOT NULL |
+
+**bookings** 
+| id | date | status_id | space_id | guest_id |
+| --- | --- | --- | --- | --- |
+| SERIAL | DATE | INT | INT | INT |
+| PK | NOT NULL | FK (statuses id) NOT NULL | FK (spaces id) NOT NULL | FK (users id) NOT NULL |
+
+**statuses**
+| id | name |
+| --- | --- |
+| SERIAL | VARCHAR(20) |
+| PK | NOT NULL |
