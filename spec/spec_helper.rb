@@ -14,9 +14,9 @@ require 'capybara/rspec'
 require 'pry'
 require 'test_db_manager'
 
-# require './app'
+require './app'
 
-# Capybara.app = MakersBnb
+Capybara.app = MakersBnb
 
 RSpec.configure do |config|
   config.before(:each) do
