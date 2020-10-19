@@ -14,6 +14,24 @@ See [Project tab](https://github.com/elsstrange/MakersBnB/projects/1).
 
 ## Set Up
 
+### Database
+
+**Live**
+```sh
+% psql -c CREATE DATABASE makersbnb;
+CREATE DATABASE
+% psql -d chitter -f ./db/migrations/01_create_users_table.sql
+CREATE TABLE
+```
+
+**Test**
+```sh
+% psql -c CREATE DATABASE makersbnb_test;
+CREATE DATABASE
+% psql -d chitter -f ./db/migrations/01_create_users_table.sql
+CREATE TABLE
+```
+
 ## Deployed App
 
 ## Design Notes
@@ -51,7 +69,7 @@ See [Project tab](https://github.com/elsstrange/MakersBnB/projects/1).
 **users** 
 | id | username | email | phone | password |
 | --- | --- | --- | --- | --- |
-| SERIAL | VARCHAR(20) | VARCHAR(100) | VARCHAR (13) | VARCHAR(?) |
+| SERIAL | VARCHAR(20) | VARCHAR(100) | VARCHAR (13) | VARCHAR |
 | PK | UNIQUE NOT NULL | UNIQUE NOT NULL | | NOT NULL |
 
 **spaces** 
