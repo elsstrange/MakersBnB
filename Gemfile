@@ -13,7 +13,10 @@ group :test do
   gem "capybara", "~> 3.33"
   gem "pry", "~> 0.13.1"
   gem "launchy", "~> 2.5"
+  gem "rspec", "~> 3.9"
   gem "rubocop", "~> 0.93.1"
   gem "simplecov", "~> 0.19.0"
   gem "simplecov-console", "~> 0.7.2"
 end
+
+
