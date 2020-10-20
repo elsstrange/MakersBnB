@@ -9,6 +9,7 @@ gem "pg", "~> 1.2"
 gem "rake", "~> 13.0"
 gem "sinatra", "~> 2.1"
 gem "sinatra-activerecord", "~> 2.0"
+gem "sinatra-flash", "~> 0.3.0"
 
 group :test do
   gem "database_cleaner-active_record", "~> 1.8"
@@ -20,5 +21,3 @@ group :test do
   gem "simplecov", "~> 0.19.0"
   gem "simplecov-console", "~> 0.7.2"
 end
-
-
