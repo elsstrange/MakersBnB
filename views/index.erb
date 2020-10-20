@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <% if @user %>
+      Welcome, <%= @user.username %>
+    <% else %>
+      <a href="/users/new">Sign Up</a>  <a href="/sessions/new">Log In</a>
+    <% end %>
+    <h1>Feel at home, anywhere</h1>
+  </body>
+</html>
