@@ -1,11 +1,17 @@
 require 'rack'
 require 'sinatra/base'
 require 'sinatra/activerecord'
+require 'sinatra/flash'
 
 require_relative 'models/user'
 
+ERRORS = {
+  :login => 'Log in failed. Check your details and try again.'
+}
+
 class MakersBnb < Sinatra::Base
   # register Sinatra::ActiveRecordsExtension
+  register Sinatra::Flash
   enable :sessions
 
   get '/' do
@@ -33,7 +39,11 @@ class MakersBnb < Sinatra::Base
     user = User.find_by(username: params[:username])
     if user.password == params[:password]
       session[:user_id] = user.id
+      redirect '/'
+    else
+      flash[:error] = ERRORS[:login]
+      redirect '/sessions/new'
     end
-    redirect '/'
+    
   end
 end
