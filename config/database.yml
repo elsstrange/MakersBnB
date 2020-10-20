@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: makersbnb_development
+  pool: 2
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: makersbnb_test
+  pool: 2
