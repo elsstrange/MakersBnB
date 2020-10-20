@@ -35,4 +35,16 @@ feature 'existing user signing in' do
     expect(page).to have_content "Log in failed. Check your details and try again."
     expect(page).to have_button('Log In')
   end
+
+  scenario 'user has invalid username credentials' do
+    visit '/'
+    click_on 'Log In'
+    expect(current_path).to eq '/sessions/new'
+    fill_in 'username', with: wrong_username
+    fill_in 'password', with: password
+    click_button 'Log In'
+    expect(current_path).to eq '/sessions/new'
+    expect(page).to have_content "Log in failed. Check your details and try again."
+    expect(page).to have_button('Log In')
+  end
 end
