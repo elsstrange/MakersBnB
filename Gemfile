@@ -12,6 +12,7 @@ gem "sinatra-activerecord", "~> 2.0"
 gem "sinatra-flash", "~> 0.3.0"
 
 group :test do
+  gem "betterlorem", "~> 0.1.2"
   gem "capybara", "~> 3.33"
   gem "database_cleaner-active_record", "~> 1.8"
   gem "factory_bot", "~> 6.1"
