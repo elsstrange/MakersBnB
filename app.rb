@@ -12,7 +12,7 @@ ERRORS = {
 class MakersBnb < Sinatra::Base
   # register Sinatra::ActiveRecordsExtension
   register Sinatra::Flash
-  enable :sessions
+  enable :sessions, :method_override
 
   get '/' do
     @user = User.find_by(id: session[:user_id])
@@ -44,5 +44,10 @@ class MakersBnb < Sinatra::Base
       flash[:error] = ERRORS[:login]
       redirect '/sessions/new'
     end
+  end
+
+  delete '/sessions' do
+    session.delete(:user_id)
+    redirect '/'
   end
 end
