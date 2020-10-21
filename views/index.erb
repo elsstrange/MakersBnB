@@ -15,5 +15,15 @@
       <a href="/users/new">Sign Up</a>  <a href="/sessions/new">Log In</a>
     <% end %>
     <h1>Feel at home, anywhere</h1>
+    <% if @user %>
+      <form action="/spaces/new" method="GET">
+        <button type="submit">List a Space</button>
+      </form>
+    <% end %>
+    <% @spaces.each do |space| %>
+      <h2><%= space.name %></h2>
+      <p><%= space.short_description(50) %></p>
+      <p>£<%= space.price %> per night</p>
+    <% end %>
   </body>
 </html>

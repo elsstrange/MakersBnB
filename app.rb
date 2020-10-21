@@ -4,6 +4,7 @@ require 'sinatra/activerecord'
 require 'sinatra/flash'
 
 require_relative 'models/user'
+require_relative 'models/space'
 
 ERRORS = {
   :login => 'Log in failed. Check your details and try again.'
@@ -16,6 +17,7 @@ class MakersBnb < Sinatra::Base
 
   get '/' do
     @user = User.find_by(id: session[:user_id])
+    @spaces = Space.all
     erb :index
   end
 
@@ -48,6 +50,16 @@ class MakersBnb < Sinatra::Base
 
   delete '/sessions' do
     session.delete(:user_id)
+    redirect '/'
+  end
+
+  get '/spaces/new' do
+    erb :spaces_new
+  end
+
+  post '/spaces' do
+    space = Space.new(name: params[:name], description: params[:description], price: params[:price], host_id: session[:user_id])
+    space.save!
     redirect '/'
   end
 end
