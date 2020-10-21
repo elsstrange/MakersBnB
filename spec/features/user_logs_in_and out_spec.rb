@@ -70,6 +70,7 @@ feature 'user logging out' do
   end
 
   scenario 'logged in user logs out' do
+    visit '/'
     click_on 'Log Out'
     expect(current_path).to eq '/'
     expect(page).not_to have_content "Welcome, #{user.username}"
