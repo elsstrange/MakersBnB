@@ -35,6 +35,11 @@ feature 'existing user signing in' do
     expect(current_path).to eq '/sessions/new'
     expect(page).to have_content "Log in failed. Check your details and try again."
     expect(page).to have_button('Log In')
+    visit '/'
+    expect(page).not_to have_content "Welcome, #{user.username}"
+    expect(page).not_to have_button('Log Out')
+    expect(page).to have_link('Sign Up', href: '/users/new')
+    expect(page).to have_link('Log In', href: '/sessions/new')
   end
 
   scenario 'user has invalid username credentials' do
@@ -47,6 +52,11 @@ feature 'existing user signing in' do
     expect(current_path).to eq '/sessions/new'
     expect(page).to have_content "Log in failed. Check your details and try again."
     expect(page).to have_button('Log In')
+    visit '/'
+    expect(page).not_to have_content "Welcome, #{user.username}"
+    expect(page).not_to have_button('Log Out')
+    expect(page).to have_link('Sign Up', href: '/users/new')
+    expect(page).to have_link('Log In', href: '/sessions/new')
   end
 end
 
@@ -74,6 +84,7 @@ feature 'user logging out' do
     click_on 'Log Out'
     expect(current_path).to eq '/'
     expect(page).not_to have_content "Welcome, #{user.username}"
+    expect(page).not_to have_button('Log Out')
     expect(page).to have_link('Sign Up', href: '/users/new')
     expect(page).to have_link('Log In', href: '/sessions/new')
   end
