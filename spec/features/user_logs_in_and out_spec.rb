@@ -1,10 +1,8 @@
 feature 'existing user signing in' do
-  let(:username) { 'Test' }
   let(:wrong_username) { 'test' }
-  let(:email) { 'makersbnb@example.com' }
   let(:password) { 'some_password' }
   let(:wrong_password) { 'wrong password' }
-  let!(:user) { User.new(username: username, email: email) }
+  let!(:user) { create(:user, username: 'Test') }
   
   before do
     user.password = password

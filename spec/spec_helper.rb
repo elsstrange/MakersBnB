@@ -11,6 +11,7 @@ SimpleCov.start
 ENV['RACK_ENV'] = 'test'
 
 require 'capybara/rspec'
+require 'factory_bot'
 require 'pry'
 
 require_relative 'support/database_helper'
@@ -20,9 +21,11 @@ require './app'
 Capybara.app = MakersBnb
 
 RSpec.configure do |config|
-  # config.before(:each) do
-  #   truncate_test_db
-  # end
+  config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    FactoryBot.find_definitions
+  end
 
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
