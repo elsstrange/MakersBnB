@@ -22,7 +22,7 @@ feature 'existing user signing in' do
     expect(page).to have_content "Welcome, #{user.username}"
     expect(page).not_to have_link('Sign Up', href: '/users/new')
     expect(page).not_to have_link('Log In', href: '/sessions/new')
-    expect(page).to have_link('Log Out', href: '/sessions')
+    expect(page).to have_button('Log Out')
   end
 
   scenario 'user has invalid password credentials' do
