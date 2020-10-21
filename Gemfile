@@ -14,6 +14,7 @@ gem "sinatra-flash", "~> 0.3.0"
 group :test do
   gem "database_cleaner-active_record", "~> 1.8"
   gem "capybara", "~> 3.33"
+  gem "factory_bot", "~> 6.1"
   gem "pry", "~> 0.13.1"
   gem "launchy", "~> 2.5"
   gem "rspec", "~> 3.9"
