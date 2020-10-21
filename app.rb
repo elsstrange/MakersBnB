@@ -36,8 +36,8 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/sessions' do
-    user = User.find_by(username: params[:username])
-    if user && user.password == params[:password]
+    user = User.authenticate(username: params[:username], password: params[:password])    #.find_by(username: params[:username])
+    if user # && user.password == params[:password]
       session[:user_id] = user.id
       redirect '/'
     else
