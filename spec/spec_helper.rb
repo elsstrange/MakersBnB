@@ -10,11 +10,13 @@ SimpleCov.start
 
 ENV['RACK_ENV'] = 'test'
 
+require 'betterlorem'
 require 'capybara/rspec'
 require 'factory_bot'
 require 'pry'
 
 require_relative 'support/database_helper'
+require_relative 'support/feature_helpers'
 
 require './app'
 

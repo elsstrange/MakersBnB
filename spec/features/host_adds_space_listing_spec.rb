@@ -1,0 +1,21 @@
+feature 'adding a listing' do
+  let(:name) { 'A lovely room with a view' }
+  let(:description) { BetterLorem.w(100, true, true) }
+  let(:price) { '50' }
+    
+  scenario 'host adds listing' do
+    log_in(:host)
+    click_button 'List a Space'
+    expect(current_path).to eq '/spaces/new'
+    # save_and_open_page
+    fill_in 'name', with: name
+    fill_in 'description', with: description
+    fill_in 'price', with: price
+    click_button 'List my Space'
+    expect(current_path).to eq '/'
+    expect(page).to have_content name
+    expect(page).to have_content blurb[0..50]
+    expect(page).not_to have_content blurb[51..-1]
+    expect(page).to have_content price
+  end
+end
