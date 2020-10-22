@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_212250) do
+ActiveRecord::Schema.define(version: 2020_10_22_183824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "date", null: false
+    t.string "status", default: "pending", null: false
+    t.integer "space_id", null: false
+    t.integer "guest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "spaces", force: :cascade do |t|
     t.string "name"
@@ -29,5 +38,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_212250) do
     t.string "phone"
   end
 
+  add_foreign_key "bookings", "spaces"
+  add_foreign_key "bookings", "users", column: "guest_id"
   add_foreign_key "spaces", "users", column: "host_id"
 end
