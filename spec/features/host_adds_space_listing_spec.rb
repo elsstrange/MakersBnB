@@ -7,7 +7,6 @@ feature 'adding a listing' do
     log_in(:host)
     click_button 'List a Space'
     expect(current_path).to eq '/spaces/new'
-    # save_and_open_page
     fill_in 'name', with: name
     fill_in 'description', with: description
     fill_in 'price', with: price
