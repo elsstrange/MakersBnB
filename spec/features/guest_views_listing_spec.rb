@@ -14,6 +14,7 @@ feature 'a prospective guest views listings' do
     within("article#space#{space1.id}") do
       click_on 'more-info'
     end
+    expect(current_path).to eq "/spaces/#{space1.id}"
     expect(page).to have_content space1.name
     expect(page).to have_content space1.description
     expect(page).to have_content "£#{space1.price} per night"
@@ -24,6 +25,7 @@ feature 'a prospective guest views listings' do
     within("article#space#{space2.id}") do
       click_on 'more-info'
     end
+    expect(current_path).to eq "/spaces/#{space2.id}"
     expect(page).to have_content space2.name
     expect(page).to have_content space2.description
     expect(page).to have_content "£#{space2.price} per night"

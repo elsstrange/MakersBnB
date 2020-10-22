@@ -21,9 +21,14 @@
       </form>
     <% end %>
     <% @spaces.each do |space| %>
-      <h2><%= space.name %></h2>
-      <p><%= space.short_description(50) %></p>
-      <p>£<%= space.price %> per night</p>
+      <article class="space" id="space<%= space.id %>">
+        <h2><%= space.name %></h2>
+        <p><%= space.short_description(50) %></p>
+        <p>£<%= space.price %> per night</p>
+        <form action="/spaces/<%= space.id %>" method="GET">
+          <button type="submit" name="more-info">>></button>
+        </form>
+      </article>
     <% end %>
   </body>
 </html>
