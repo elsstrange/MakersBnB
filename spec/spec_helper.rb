@@ -18,7 +18,7 @@ require 'pry'
 require_relative 'support/database_helper'
 require_relative 'support/feature_helpers'
 
-require './app'
+require './app/app'
 
 Capybara.app = MakersBnb
 

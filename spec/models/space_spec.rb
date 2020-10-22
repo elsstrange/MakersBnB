@@ -1,4 +1,4 @@
-require './models/space'
+require './app/models/space'
 
 describe Space do
   let(:description) { BetterLorem.c(100, true, true) }
