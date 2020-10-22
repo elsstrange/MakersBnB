@@ -14,22 +14,23 @@ See [Project tab](https://github.com/elsstrange/MakersBnB/projects/1).
 
 ## Set Up
 
-### Database
-
-**Live**
+**General**
 ```sh
-% psql -c CREATE DATABASE makersbnb;
-CREATE DATABASE
-% psql -d chitter -f ./db/migrations/01_create_users_table.sql
-CREATE TABLE
+$ git clone && cd ./makersbnb
+$ bundle install
+$ bundle exec rake db:create
+```
+
+**Development**
+```sh
+$ bundle exec rake db:migrate RACK_ENV=development
+$ bundle exec rackup
 ```
 
 **Test**
 ```sh
-% psql -c CREATE DATABASE makersbnb_test;
-CREATE DATABASE
-% psql -d chitter -f ./db/migrations/01_create_users_table.sql
-CREATE TABLE
+$ bundle exec rake db:migrate RACK_ENV=test
+$ bundle exec rspec
 ```
 
 ## Deployed App
@@ -56,12 +57,7 @@ CREATE TABLE
 **Booking** 
 | Responsibilities | Collaborators |
 | --- | --- |
-| date | User (as guest)<br>Space<br>Status |
-
-**Status** 
-| Responsibilities | Collaborators |
-| --- | --- |
-| name |  |
+| date<br>status | User (as guest)<br>Space |
 
 
 ### Schema
@@ -85,13 +81,7 @@ CREATE TABLE
 | PK | NOT NULL | NOT NULL | FK (spaces id) NOT NULL |
 
 **bookings** 
-| id | date | status_id | space_id | guest_id |
+| id | date | status | space_id | guest_id |
 | --- | --- | --- | --- | --- |
-| SERIAL | DATE | INT | INT | INT |
-| PK | NOT NULL | FK (statuses id) NOT NULL | FK (spaces id) NOT NULL | FK (users id) NOT NULL |
-
-**statuses**
-| id | name |
-| --- | --- |
-| SERIAL | VARCHAR(20) |
-| PK | NOT NULL |
+| SERIAL | DATE | VARCHAR(60) | INT | INT |
+| PK | NOT NULL | NOT NULL | FK (spaces id) NOT NULL | FK (users id) NOT NULL |
