@@ -14,7 +14,7 @@ feature 'adding a listing' do
     click_button 'List my Space'
     expect(current_path).to eq '/'
     expect(page).to have_content name
-    expect(page).to have_content description[0..49].chomp
+    expect(page).to have_content description[0..49].rstrip
     expect(page).not_to have_content description[50..-1]
     expect(page).to have_content price
   end

@@ -5,10 +5,10 @@ feature 'a prospective guest views listings' do
   scenario 'user is not logged in, views multiple listings' do
     visit '/'
     expect(page).to have_content space1.name
-    expect(page).to have_content space1.description[0..49].chomp
+    expect(page).to have_content space1.description[0..49].rstrip
     expect(page).to have_content "£#{space1.price} per night"
     expect(page).to have_content space2.name
-    expect(page).to have_content space2.description[0..49].chomp
+    expect(page).to have_content space2.description[0..49].rstrip
     expect(page).to have_content "£#{space2.price} per night"
 
     within("article#space#{space1.id}") do
