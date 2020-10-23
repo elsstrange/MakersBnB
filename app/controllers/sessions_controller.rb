@@ -5,7 +5,7 @@ class MakersBnb < Sinatra::Base
       session[:user_id] = user.id
       redirect '/'
     else
-      flash[:error] = ERRORS[:login]
+      flash.next[:error] = ERRORS[:login]
       redirect '/sessions/new'
     end
   end
