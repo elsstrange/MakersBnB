@@ -10,4 +10,13 @@ describe Space do
       expect(space.short_description(50)).to eq description[0..49]
     end
   end
+
+  describe '#bookings' do
+    let(:booking_class) { double("Booking class") }
+
+    it 'calls #where on Booking class with space_id attribute' do
+      expect(booking_class).to receive(:where).with(space_id: space.id)
+      space.bookings(booking_class)
+    end
+  end
 end
