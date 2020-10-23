@@ -1,7 +1,17 @@
 require 'bcrypt'
+require_relative './space'
 
 class User < ActiveRecord::Base
   include BCrypt
+
+  def self.authenticate(username:, password:)
+    user = find_by(username: username)
+    
+    return nil if user.nil?
+    return nil if user.password != password
+
+    user
+  end
 
   def password
     @password ||= Password.new(password_hash)
@@ -12,12 +22,7 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  def self.authenticate(username:, password:)
-    user = find_by(username: username)
-    
-    return nil if user.nil?
-    return nil if user.password != password
-
-    user
+  def spaces(space_class = Space)
+    space_class.where(host_id: id)
   end
 end

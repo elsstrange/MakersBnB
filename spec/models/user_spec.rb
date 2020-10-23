@@ -25,4 +25,14 @@ describe User do
       expect(User.authenticate(username: username, password: wrong_password)).to be_nil      
     end
   end
+
+  describe '#spaces' do
+    let(:user) { create(:host) }
+    let(:space_class) { double("Space class") }
+    
+    it 'calls .where on Space class, with the host_id attribute' do
+      expect(space_class).to receive(:where).with(host_id: user.id)
+      user.spaces(space_class)
+    end
+  end
 end
