@@ -68,7 +68,7 @@ feature 'managing bookings as a host' do
       within ("article#spacebooking#{booking1.id}") do
         expect(page).to have_content 'Pending'
       end
-      within ("article#spacebooking#{booking1.id}") do
+      within ("article#spacebooking#{booking2.id}") do
         expect(page).to have_content 'Confirmed'
       end
     end
@@ -91,7 +91,7 @@ feature 'managing bookings as a host' do
       within ("article#spacebooking#{booking1.id}") do
         expect(page).to have_content 'Pending'
       end
-      within ("article#spacebooking#{booking1.id}") do
+      within ("article#spacebooking#{booking2.id}") do
         expect(page).to have_content 'Rejected'
       end
     end
