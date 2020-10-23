@@ -4,7 +4,7 @@ feature 'viewing the status of booking requests' do
   let!(:guest) { create(:guest, set_password: password) }
   let!(:pending_booking) { create(:pending_booking, space_id: space.id, guest_id: guest.id) }
   let!(:confirmed_booking) { create(:confirmed_booking, advance_date: 2, space_id: space.id, guest_id: guest.id) }
-  let!(:cancelled_booking) { create(:cancelled_booking, advance_date: 3, space_id: space.id, guest_id: guest.id) }
+  let!(:rejected_booking) { create(:rejected_booking, advance_date: 3, space_id: space.id, guest_id: guest.id) }
 
   scenario 'a guest checks the status of their booking requests' do
     visit '/'
@@ -24,10 +24,10 @@ feature 'viewing the status of booking requests' do
       expect(page).to have_content confirmed_booking.date.strftime('%d/%m/%Y')
       expect(page).to have_content 'Confirmed'
     end
-    within("article#guestbooking#{cancelled_booking.id}") do
+    within("article#guestbooking#{rejected_booking.id}") do
       expect(page).to have_content space.name
-      expect(page).to have_content cancelled_booking.date.strftime('%d/%m/%Y')
-      expect(page).to have_content 'Cancelled'
+      expect(page).to have_content rejected_booking.date.strftime('%d/%m/%Y')
+      expect(page).to have_content 'Rejected'
     end
   end  
 end

@@ -15,8 +15,8 @@ FactoryBot.define do
       status { 'confirmed' }
     end
 
-    factory :cancelled_booking do
-      status { 'cancelled' }
+    factory :rejected_booking do
+      status { 'rejected' }
     end
   end
 end
