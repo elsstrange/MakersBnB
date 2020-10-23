@@ -28,6 +28,11 @@
                 <b>Request from <%= space_booking.guest.username %></b>
                 <b>For:</b> <%= space_booking.date.strftime(DATE_FORMAT) %> <br>
                 <b>Status:</b> <%= space_booking.status.capitalize %>
+                <form action="/bookings/<%= space_booking.id %>" method="POST">
+                  <input type="hidden" name="_method" value="patch">>
+                  <button type="submit" name="status" value="confirmed">Confirm Booking</button>
+                  <button type="submit" name="status" value="rejected">Reject Booking</button>
+                </form>
               </p>
             </article>
           <% end %>
