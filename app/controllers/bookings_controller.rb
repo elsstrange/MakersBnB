@@ -1,4 +1,9 @@
 class MakersBnb < Sinatra::Base
+  get '/bookings' do
+    @guest_bookings = Booking.where(guest_id: session[:user_id])
+    erb :bookings
+  end
+  
   post '/bookings' do
     booking = Booking.create(date: params[:date], space_id: params[:space_id], guest_id: session[:user_id])
     space = Space.find_by(id: params[:space_id])

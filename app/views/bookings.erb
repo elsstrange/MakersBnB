@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <section class="bookings-as-guest">
+      <% @guest_bookings.each do |guest_booking| %>
+        <article class="guest-booking" id="guestbooking<%= guest_booking.id %>">
+          <h2><%= guest_booking.space.name %></h2>
+          <p>
+            <b>On:</b> <%= guest_booking.date.strftime(DATE_FORMAT) %> <br>
+            <b>Status:</b> <%= guest_booking.status.capitalize %>
+          </p>
+        </article>
+      <% end %>
+    </section>
+  </body>
+</html>

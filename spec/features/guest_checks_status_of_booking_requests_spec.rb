@@ -14,17 +14,17 @@ feature 'viewing the status of booking requests' do
     click_button 'Log In'
     click_on 'Bookings'
     expect(current_path).to eq '/bookings'
-    within("article#booking#{pending_booking.id}") do
+    within("article#guestbooking#{pending_booking.id}") do
       expect(page).to have_content space.name
       expect(page).to have_content pending_booking.date.strftime('%d/%m/%Y')
       expect(page).to have_content 'Pending'
     end
-    within("article#booking#{confirmed_booking.id}") do
+    within("article#guestbooking#{confirmed_booking.id}") do
       expect(page).to have_content space.name
       expect(page).to have_content confirmed_booking.date.strftime('%d/%m/%Y')
       expect(page).to have_content 'Confirmed'
     end
-    within("article#booking#{cancelled_booking.id}") do
+    within("article#guestbooking#{cancelled_booking.id}") do
       expect(page).to have_content space.name
       expect(page).to have_content cancelled_booking.date.strftime('%d/%m/%Y')
       expect(page).to have_content 'Cancelled'

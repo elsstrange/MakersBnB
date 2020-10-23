@@ -10,6 +10,7 @@
         <input type="hidden" name = "_method" value="delete">
         <button type="submit">Log Out</button>
       </form>
+      <a href="/bookings">Bookings</a>
       <h3>Welcome, <%= @user.username %></h3>
     <% else %>
       <a href="/users/new">Sign Up</a>  <a href="/sessions/new">Log In</a>
