@@ -17,5 +17,22 @@
         </article>
       <% end %>
     </section>
+    <section class="bookings-as-host">
+      <h2>Requests I've Received</h2>
+      <% @user.spaces.each do |space| %>
+        <section class="host-space" id="space<%= space.id %>">
+          <h3><%= space.name %></h3>
+          <% space.bookings.each do |space_booking| %>
+            <article class="space-booking" id="spacebooking<%= space_booking.id %>">
+              <p>
+                <b>Request from <%= space_booking.guest.username %></b>
+                <b>For:</b> <%= space_booking.date.strftime(DATE_FORMAT) %> <br>
+                <b>Status:</b> <%= space_booking.status.capitalize %>
+              </p>
+            </article>
+          <% end %>
+        </section>
+      <% end %>
+    </section>
   </body>
 </html>

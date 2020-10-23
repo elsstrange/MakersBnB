@@ -1,5 +1,6 @@
 class MakersBnb < Sinatra::Base
   get '/bookings' do
+    @user = User.find_by(id: session[:user_id])
     @guest_bookings = Booking.where(guest_id: session[:user_id])
     erb :bookings
   end
