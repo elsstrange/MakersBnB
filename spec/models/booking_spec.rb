@@ -7,7 +7,7 @@ describe Booking do
 
   describe '#space' do
     it 'calls .find_by on the Space class, with the booking space_id attribute' do
-      expect(space_class).to receive(:find_by).with(space.id)
+      expect(space_class).to receive(:find_by).with(id: space.id)
       booking.space(space_class)
     end
   end
