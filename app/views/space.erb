@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <a href="/spaces">Spaces</a>
+    <%= erb :'partials/header' %>
     <h1><%= @space.name %></h1>
     <p><%= @space.description %></p>
     <p>£<%= @space.price %> per night</p>

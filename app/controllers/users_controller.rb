@@ -10,7 +10,7 @@ class MakersBnb < Sinatra::Base
   end
   
   get '/users/new' do
-    redirect '/' if session[:user_id]
+    redirect '/' if current_user
     erb :users_new
   end
   

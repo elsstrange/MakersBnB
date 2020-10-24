@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
+    <%= erb :'partials/header' %>
     <section class="bookings-as-guest">
       <h2>Requests I've Made</h2>
       <% @guest_bookings.each do |guest_booking| %>

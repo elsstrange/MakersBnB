@@ -1,0 +1,13 @@
+<% if @user %>
+  <h3>Welcome, <%= @user.username %></h3>
+  <form action="/sessions" method="POST">
+    <input type="hidden" name = "_method" value="delete">
+    <button type="submit">Log Out</button>
+  </form>
+  <a href="/bookings">Bookings</a>    
+<% else %>
+  <a href="/users/new">Sign Up</a>  <a href="/sessions/new">Log In</a>
+<% end %>
+<a href="/spaces">Spaces</a>
+<p><%= flash[:acknowledgement]%></p>
+<p><%= flash[:error]%></p>
