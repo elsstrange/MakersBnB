@@ -6,6 +6,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem "bcrypt", "~> 3.1"
 gem "pg", "~> 1.2"
+gem "puma", "~> 5.0"
 gem "rake", "~> 13.0"
 gem "sinatra", "~> 2.1"
 gem "sinatra-activerecord", "~> 2.0"
@@ -23,5 +24,3 @@ group :test do
   gem "simplecov", "~> 0.19.0"
   gem "simplecov-console", "~> 0.7.2"
 end
-
-gem "puma", "~> 5.0"
