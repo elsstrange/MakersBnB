@@ -23,3 +23,5 @@ group :test do
   gem "simplecov", "~> 0.19.0"
   gem "simplecov-console", "~> 0.7.2"
 end
+
+gem "puma", "~> 5.0"
