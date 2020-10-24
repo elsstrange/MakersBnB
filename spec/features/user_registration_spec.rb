@@ -19,12 +19,12 @@ feature 'new user signing up' do
     expect(page).not_to have_link('Log In', href: '/sessions/new')
   end
 
-  scenario 'user has mismatching passwords', :pending do
+  scenario 'user has mismatching passwords' do
     visit '/'
     click_on 'Sign Up'
     expect(current_path).to eq '/users/new'
     fill_in 'username', with: username
-    fill_in 'email', with: new_email
+    fill_in 'email', with: email
     fill_in 'password', with: password
     fill_in 'password confirmation', with: other_password
     click_button 'Sign Up'
@@ -53,7 +53,7 @@ feature 'new user signing up' do
       expect(page).not_to have_button('Log Out')
     end
 
-    scenario 'user tries email that already exists', :pending do
+    scenario 'user tries email that already exists' do
       visit '/'
       click_on 'Sign Up'
       expect(current_path).to eq '/users/new'
