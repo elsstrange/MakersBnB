@@ -15,7 +15,12 @@ require_relative 'controllers/spaces_controller'
 require_relative 'controllers/bookings_controller'
 
 ERRORS = {
-  :login => 'Log in failed. Check your details and try again.'
+  :login => 'Log in failed. Check your details and try again.',
+  :sign_up => {
+    :duplicate_username => 'Sign up failed: Username is already registered',
+    :duplicate_email => 'Sign up failed: Email is already registered',
+    :password_mismatch => 'Sign up failed: Passwords must match'
+  }
 }
 
 DATE_FORMAT = '%d/%m/%Y'
