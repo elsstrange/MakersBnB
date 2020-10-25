@@ -72,6 +72,7 @@ h3 {
 h4 {
   font-size: 14pt;
   font-weight: bold;
+  padding-bottom: 2px;
 }
 
 p {
@@ -137,7 +138,7 @@ a {
   text-align: center;
 }
 
-.list-wrapper {
+.wrapped-list {
   border: darkred solid 3px;
   padding: 50px 15px 40px 15px;
   margin: 2% 16% 2% 16%;
@@ -197,4 +198,33 @@ a {
   color: red;
   padding-block: 2%;
   text-align: center;
+}
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+
+#bookings-as-guest {
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+}
+
+#bookings-as-host {
+  float: right;
+  width: 45%;
+  margin: 2.5%;
+}
+
+.list-head {
+  padding: 5% 0% 0% 5%;
 }

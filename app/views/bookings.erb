@@ -7,41 +7,44 @@
   </head>
   <body>
     <%= erb :'partials/header' %>
-    <section class="list-wrapper" id="bookings-as-guest">
-      <h2>Requests I've Made</h2>
-      <% @guest_bookings.each do |guest_booking| %>
-        <section class="list-item" id="guestbooking<%= guest_booking.id %>">
-          <h4><%= guest_booking.space.name %></h3>
-          <p>
-            <strong>On:</strong> <%= guest_booking.date.strftime(DATE_FORMAT) %> <br>
-            <strong>Status:</strong> <%= guest_booking.status.capitalize %>
-          </p>
-        </section>
-      <% end %>
-    </section>
-    <section class="list-wrapper" id="bookings-as-host">
-      <h2>Requests I've Received</h2>
-      <% @user.spaces.each do |space| %>
-        <section class="list-item" id="space<%= space.id %>">
-          <h3><%= space.name %></h3>
-          <% space.bookings.each do |space_booking| %>
-            <section class="list-item" id="spacebooking<%= space_booking.id %>">
-              <p>
-                <h4>Request from <%= space_booking.guest.username %></h4> <br>
-                <strong>For:</strong> <%= space_booking.date.strftime(DATE_FORMAT) %> <br>
-                <strong>Status:</strong> <%= space_booking.status.capitalize %>
-                <% if space_booking.status == "pending" %>
-                  <form action="/bookings/<%= space_booking.id %>" method="POST">
-                    <input type="hidden" name="_method" value="patch">
-                    <button class="preferred-action-small" type="submit" name="status" value="confirmed">Confirm Booking</button>
-                    <button class="lesser-action-small" type="submit" name="status" value="rejected">Reject Booking</button>
-                  </form>
-                <% end %>
-              </p>
-            </section>
-          <% end %>
-        </section>
-      <% end %>
+    <h1>My Bookings</h1>
+    <section class="group">
+      <section id="bookings-as-guest">
+        <h2 class="list-head">Requests I've Made</h2>
+        <% @guest_bookings.each do |guest_booking| %>
+          <section class="list-item" id="guestbooking<%= guest_booking.id %>">
+            <h4><%= guest_booking.space.name %></h4>
+            <p>
+              <strong>On:</strong> <%= guest_booking.date.strftime(DATE_FORMAT) %> <br>
+              <strong>Status:</strong> <%= guest_booking.status.capitalize %>
+            </p>
+          </section>
+        <% end %>
+      </section>
+      <section id="bookings-as-host">
+        <h2 class="list-head">Requests I've Received</h2>
+        <% @user.spaces.each do |space| %>
+          <section class="unwrapped-list" id="space<%= space.id %>">
+            <h3 class="list-head"><%= space.name %></h3>
+            <% space.bookings.each do |space_booking| %>
+              <section class="list-item" id="spacebooking<%= space_booking.id %>">
+                <h4>Request from <%= space_booking.guest.username %></h4>
+                <p>
+                  <strong>For:</strong> <%= space_booking.date.strftime(DATE_FORMAT) %> <br>
+                  <strong>Status:</strong> <%= space_booking.status.capitalize %>
+                  <% if space_booking.status == "pending" %>
+                    <form action="/bookings/<%= space_booking.id %>" method="POST">
+                      <input type="hidden" name="_method" value="patch">
+                      <button class="preferred-action-small" type="submit" name="status" value="confirmed">Confirm Booking</button>
+                      <button class="lesser-action-small" type="submit" name="status" value="rejected">Reject Booking</button>
+                    </form>
+                  <% end %>
+                </p>
+              </section>
+            <% end %>
+          </section>
+        <% end %>
+      </section>
     </section>
   </body>
 </html>
