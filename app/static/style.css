@@ -154,7 +154,8 @@ a {
 }
 
 .more-info {
-  font: bold 20px;
+  font: bold;
+  font-size: 30px;
   text-decoration: none;
   background-color: indianred;
   color: black;
@@ -163,6 +164,10 @@ a {
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
+  float: right;
+  height: 83px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .top-navigation {

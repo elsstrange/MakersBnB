@@ -18,12 +18,10 @@
     <section class="list-wrapper">
       <% @spaces.each do |space| %>
         <section class="list-item" id="space<%= space.id %>">
+          <a class="more-info" href="/spaces/<%= space.id %>">></a>
           <h2><%= space.name %></h2>
           <p><%= space.short_description(75) %>...</p>
-          <p>
-            £<%= space.price %> per night
-            <a class="more-info" href="/spaces/<%= space.id %>">More ></a>
-          </p>
+          <p>£<%= space.price %> per night</p>
         </section>
         <div class="spacer"></div>
       <% end %>
