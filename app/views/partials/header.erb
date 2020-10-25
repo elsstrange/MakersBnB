@@ -1,13 +1,21 @@
-<% if @user %>
-  <h3>Welcome, <%= @user.username %></h3>
-  <form action="/sessions" method="POST">
-    <input type="hidden" name = "_method" value="delete">
-    <button type="submit">Log Out</button>
-  </form>
-  <a href="/bookings">Bookings</a>    
-<% else %>
-  <a href="/users/new">Sign Up</a>  <a href="/sessions/new">Log In</a>
-<% end %>
-<a href="/spaces">Spaces</a>
-<p><%= flash[:acknowledgement]%></p>
-<p><%= flash[:error]%></p>
+<section class="top-navigation">
+  <% if @user %>
+    <div class="greeting">Welcome, <%= @user.username %></div>
+    <div class="nav-buttons">
+      <form action="/sessions" method="POST">
+        <input type="hidden" name = "_method" value="delete">
+        <button class='button-link' type="submit">Log Out</button> | <a href="/bookings">Bookings</a> | <a href="/spaces">Spaces</a>
+      </form>
+    </div> 
+  <% else %>
+    <div class="nav-buttons">
+      <a href="/users/new">Sign Up</a> | <a href="/sessions/new">Log In</a> | <a href="/spaces">Spaces</a>
+    </div>
+  <% end %>
+  <% if flash[:acknowledgement] || flash[:error] %>
+  <div class="flash_header">
+    <%= flash[:acknowledgement]%>
+    <%= flash[:error]%>
+  </div>
+  <% end %>
+</section>

@@ -2,7 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title><%= @space.name %></title>
   </head>
   <body>
     <%= erb :'partials/header' %>
@@ -10,13 +11,13 @@
     <p><%= @space.description %></p>
     <p>£<%= @space.price %> per night</p>
     <% if session[:user_id] %>
-    <form action="/bookings" method="POST">
       <h2>Would you like to book?</h2>
-      <label for="date">Arrival date:</label>
-      <input type="date" name="date" id="date">
-      <input type="hidden" name = "space_id" value="<%= @space.id %>">
-      <button type="submit">Request Booking</button>
-    </form>
+      <form action="/bookings" method="POST">
+        <label for="date">Arrival date:</label>
+        <input type="date" name="date" id="date">
+        <input type="hidden" name = "space_id" value="<%= @space.id %>">
+        <button type="submit">Request Booking</button>
+      </form>
     <% end %>
   </body>
 </html>

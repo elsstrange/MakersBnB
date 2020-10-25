@@ -2,25 +2,31 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>MakersBNB</title>
   </head>
   <body>
     <%= erb :'partials/header' %>
     <h1>Feel at home, anywhere</h1>
     <% if @user %>
-      <form action="/spaces/new" method="GET">
-        <button type="submit">List a Space</button>
-      </form>
-    <% end %>
-    <% @spaces.each do |space| %>
-      <article class="space" id="space<%= space.id %>">
-        <h2><%= space.name %></h2>
-        <p><%= space.short_description(50) %>...</p>
-        <p>£<%= space.price %> per night</p>
-        <form action="/spaces/<%= space.id %>" method="GET">
-          <button type="submit" name="more-info">>></button>
+      <div class="centred">
+        <form action="/spaces/new" method="GET">
+          <button class="preferred-action" type="submit">List a Space</button>
         </form>
-      </article>
+      </div>
     <% end %>
+    <section class="list-wrapper">
+      <% @spaces.each do |space| %>
+        <section class="list-item" id="space<%= space.id %>">
+          <h2><%= space.name %></h2>
+          <p><%= space.short_description(75) %>...</p>
+          <p>
+            £<%= space.price %> per night
+            <a class="more-info" href="/spaces/<%= space.id %>">More ></a>
+          </p>
+        </section>
+        <div class="spacer"></div>
+      <% end %>
+    <section>
   </body>
 </html>

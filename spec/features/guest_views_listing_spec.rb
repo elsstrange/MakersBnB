@@ -11,8 +11,8 @@ feature 'a prospective guest views listings' do
     expect(page).to have_content space2.description[0..49].rstrip
     expect(page).to have_content "£#{space2.price} per night"
 
-    within("article#space#{space1.id}") do
-      click_on 'more-info'
+    within("section#space#{space1.id}") do
+      find('.more-info').click
     end
     expect(current_path).to eq "/spaces/#{space1.id}"
     expect(page).to have_content space1.name
@@ -23,8 +23,8 @@ feature 'a prospective guest views listings' do
     click_on 'Spaces'
     expect(current_path).to eq '/'
 
-    within("article#space#{space2.id}") do
-      click_on 'more-info'
+    within("section#space#{space2.id}") do
+      find('.more-info').click
     end
     expect(current_path).to eq "/spaces/#{space2.id}"
     expect(page).to have_content space2.name
@@ -35,8 +35,8 @@ feature 'a prospective guest views listings' do
 
   scenario 'guest logs in, views a listing and can book' do
     log_in(:guest)
-    within("article#space#{space1.id}") do
-      click_on 'more-info'
+    within("section#space#{space1.id}") do
+      find('.more-info').click
     end
     expect(current_path).to eq "/spaces/#{space1.id}"
     expect(page).to have_content space1.name

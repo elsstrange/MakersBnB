@@ -2,40 +2,41 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>My Bookings</title>
   </head>
   <body>
     <%= erb :'partials/header' %>
-    <section class="bookings-as-guest">
+    <section class="list-wrapper" id="bookings-as-guest">
       <h2>Requests I've Made</h2>
       <% @guest_bookings.each do |guest_booking| %>
-        <article class="guest-booking" id="guestbooking<%= guest_booking.id %>">
-          <h3><%= guest_booking.space.name %></h3>
+        <section class="list-item" id="guestbooking<%= guest_booking.id %>">
+          <h4><%= guest_booking.space.name %></h3>
           <p>
-            <b>On:</b> <%= guest_booking.date.strftime(DATE_FORMAT) %> <br>
-            <b>Status:</b> <%= guest_booking.status.capitalize %>
+            <strong>On:</strong> <%= guest_booking.date.strftime(DATE_FORMAT) %> <br>
+            <strong>Status:</strong> <%= guest_booking.status.capitalize %>
           </p>
-        </article>
+        </section>
       <% end %>
     </section>
-    <section class="bookings-as-host">
+    <section class="list-wrapper" id="bookings-as-host">
       <h2>Requests I've Received</h2>
       <% @user.spaces.each do |space| %>
-        <section class="host-space" id="space<%= space.id %>">
+        <section class="list-item" id="space<%= space.id %>">
           <h3><%= space.name %></h3>
           <% space.bookings.each do |space_booking| %>
-            <article class="space-booking" id="spacebooking<%= space_booking.id %>">
+            <section class="list-item" id="spacebooking<%= space_booking.id %>">
               <p>
-                <b>Request from <%= space_booking.guest.username %></b>
-                <b>For:</b> <%= space_booking.date.strftime(DATE_FORMAT) %> <br>
-                <b>Status:</b> <%= space_booking.status.capitalize %>
+                <h4>Request from <%= space_booking.guest.username %></h4> <br>
+                <strong>For:</strong> <%= space_booking.date.strftime(DATE_FORMAT) %> <br>
+                <strong>Status:</strong> <%= space_booking.status.capitalize %>
                 <form action="/bookings/<%= space_booking.id %>" method="POST">
-                  <input type="hidden" name="_method" value="patch">>
-                  <button type="submit" name="status" value="confirmed">Confirm Booking</button>
-                  <button type="submit" name="status" value="rejected">Reject Booking</button>
+                  <input type="hidden" name="_method" value="patch">
+                  <button class="preferred-action-small" type="submit" name="status" value="confirmed">Confirm Booking</button>
+                  <button class="lesser-action-small" type="submit" name="status" value="rejected">Reject Booking</button>
                 </form>
               </p>
-            </article>
+            </section>
           <% end %>
         </section>
       <% end %>

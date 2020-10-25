@@ -20,21 +20,21 @@ feature 'managing bookings as a host' do
       click_on 'Bookings'
 
       expect(current_path).to eq '/bookings'
-      within("section.host-space#space#{space1.id}") do
+      within("#space#{space1.id}") do
         expect(page).to have_content space1.name
         expect(page).to have_content pending_booking.date.strftime('%d/%m/%Y')
         expect(page).to have_content "Request from #{guest.username}"
         expect(page).to have_content 'Pending'
       end
-      within("section.host-space#space#{space2.id}") do
+      within("#space#{space2.id}") do
         expect(page).to have_content space2.name
         
-        within("article#spacebooking#{confirmed_booking.id}") do
+        within("section#spacebooking#{confirmed_booking.id}") do
           expect(page).to have_content confirmed_booking.date.strftime('%d/%m/%Y')
           expect(page).to have_content "Request from #{guest.username}"
           expect(page).to have_content 'Confirmed'
         end
-        within("article#spacebooking#{rejected_booking.id}") do
+        within("section#spacebooking#{rejected_booking.id}") do
           expect(page).to have_content rejected_booking.date.strftime('%d/%m/%Y')
           expect(page).to have_content "Request from #{guest.username}"
           expect(page).to have_content 'Rejected'
@@ -57,18 +57,18 @@ feature 'managing bookings as a host' do
       fill_in 'password', with: password
       click_button 'Log In'
       click_on 'Bookings'
-      within ("article#spacebooking#{booking1.id}") do
+      within ("section#spacebooking#{booking1.id}") do
         expect(page).to have_content 'Pending'
       end
-      within ("article#spacebooking#{booking2.id}") do
+      within ("section#spacebooking#{booking2.id}") do
         expect(page).to have_content 'Pending'
         click_button 'Confirm Booking'
       end
       expect(current_path).to eq '/bookings'
-      within ("article#spacebooking#{booking1.id}") do
+      within ("section#spacebooking#{booking1.id}") do
         expect(page).to have_content 'Pending'
       end
-      within ("article#spacebooking#{booking2.id}") do
+      within ("section#spacebooking#{booking2.id}") do
         expect(page).to have_content 'Confirmed'
       end
     end
@@ -80,18 +80,18 @@ feature 'managing bookings as a host' do
       fill_in 'password', with: password
       click_button 'Log In'
       click_on 'Bookings'
-      within ("article#spacebooking#{booking1.id}") do
+      within ("section#spacebooking#{booking1.id}") do
         expect(page).to have_content 'Pending'
       end
-      within ("article#spacebooking#{booking2.id}") do
+      within ("section#spacebooking#{booking2.id}") do
         expect(page).to have_content 'Pending'
         click_button 'Reject Booking'
       end
       expect(current_path).to eq '/bookings'
-      within ("article#spacebooking#{booking1.id}") do
+      within ("section#spacebooking#{booking1.id}") do
         expect(page).to have_content 'Pending'
       end
-      within ("article#spacebooking#{booking2.id}") do
+      within ("section#spacebooking#{booking2.id}") do
         expect(page).to have_content 'Rejected'
       end
     end

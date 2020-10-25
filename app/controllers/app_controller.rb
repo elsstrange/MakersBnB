@@ -1,6 +1,7 @@
 class MakersBnb < Sinatra::Base
   # register Sinatra::ActiveRecordsExtension
   set :root, File.dirname(File.expand_path('..', __FILE__))
+  set :public_folder, Proc.new { File.join(root, 'static') }
   register Sinatra::Flash
   enable :sessions, :method_override
 

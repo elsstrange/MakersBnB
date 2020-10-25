@@ -4,7 +4,7 @@ feature 'requesting a booking' do
 
   scenario 'a guest requests a booking for a space on a specific date' do
     log_in(:guest)
-    click_on 'more-info'
+    find('.more-info').click
     fill_in 'date', with: date.strftime('%Y-%m-%d')
     click_button 'Request Booking'
     expect(current_path).to eq '/'
