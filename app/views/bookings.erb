@@ -9,7 +9,7 @@
     <%= erb :'partials/header' %>
     <h1>My Bookings</h1>
     <section class="group">
-      <section id="bookings-as-guest">
+      <section class="float-left" id="bookings-as-guest">
         <h2 class="list-head">Requests I've Made</h2>
         <% @guest_bookings.each do |guest_booking| %>
           <section class="list-item" id="guestbooking<%= guest_booking.id %>">
@@ -21,7 +21,7 @@
           </section>
         <% end %>
       </section>
-      <section id="bookings-as-host">
+      <section class="float-right" id="bookings-as-host">
         <h2 class="list-head">Requests I've Received</h2>
         <% @user.spaces.each do |space| %>
           <section class="unwrapped-list" id="space<%= space.id %>">

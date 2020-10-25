@@ -1,21 +1,28 @@
 <section class="top-navigation">
-  <% if @user %>
-    <div class="greeting">Welcome, <%= @user.username %></div>
-    <div class="nav-buttons">
-      <form action="/sessions" method="POST">
-        <input type="hidden" name = "_method" value="delete">
-        <button class='button-link' type="submit">Log Out</button> | <a href="/bookings">Bookings</a> | <a href="/spaces">Spaces</a>
-      </form>
-    </div> 
-  <% else %>
-    <div class="nav-buttons">
-      <a href="/users/new">Sign Up</a> | <a href="/sessions/new">Log In</a> | <a href="/spaces">Spaces</a>
+  <section class="group">
+    <div class="float-left">
+      <h2 id="header-brand">MakersBNB</h2>
     </div>
-  <% end %>
+    <div class="float-right">
+      <% if @user %>
+        <div class="greeting">Welcome, <%= @user.username %></div>
+        <div class="nav-buttons">
+          <form action="/sessions" method="POST">
+            <input type="hidden" name = "_method" value="delete">
+            <button class='button-link' type="submit">Log Out</button> | <a href="/bookings">Bookings</a> | <a href="/spaces">Spaces</a>
+          </form>
+        </div> 
+      <% else %>
+        <div class="nav-buttons">
+          <a href="/users/new">Sign Up</a> | <a href="/sessions/new">Log In</a> | <a href="/spaces">Spaces</a>
+        </div>
+      <% end %>
+    </div>
+  </section>
   <% if flash[:acknowledgement] || flash[:error] %>
-  <div class="flash_header">
-    <%= flash[:acknowledgement]%>
-    <%= flash[:error]%>
-  </div>
+    <div class="flash_header">
+      <%= flash[:acknowledgement]%>
+      <%= flash[:error]%>
+    </div>
   <% end %>
 </section>

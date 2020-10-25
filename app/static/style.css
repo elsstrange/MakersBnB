@@ -173,11 +173,14 @@ a {
 
 .top-navigation {
   background-color: indianred;
-  padding: 15px 0px 15px 0px;
   margin-right: unset;
   margin-left: unset;
   margin-right: 0%;
   margin-left: 0%;
+}
+
+#header-brand {
+  padding: 0px;
 }
 
 .greeting {
@@ -213,13 +216,13 @@ a {
   *zoom: 1;
 }
 
-#bookings-as-guest {
+.float-left {
   float: left;
   width: 45%;
   margin: 2.5%;
 }
 
-#bookings-as-host {
+.float-right {
   float: right;
   width: 45%;
   margin: 2.5%;
