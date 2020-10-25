@@ -70,6 +70,8 @@ feature 'managing bookings as a host' do
       end
       within ("section#spacebooking#{booking2.id}") do
         expect(page).to have_content 'Confirmed'
+        expect(page).not_to have_button 'Confirm Booking'
+        expect(page).not_to have_button 'Reject Booking'
       end
     end
 
@@ -93,6 +95,8 @@ feature 'managing bookings as a host' do
       end
       within ("section#spacebooking#{booking2.id}") do
         expect(page).to have_content 'Rejected'
+        expect(page).not_to have_button 'Confirm Booking'
+        expect(page).not_to have_button 'Reject Booking'
       end
     end
   end

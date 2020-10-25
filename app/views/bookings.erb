@@ -30,11 +30,13 @@
                 <h4>Request from <%= space_booking.guest.username %></h4> <br>
                 <strong>For:</strong> <%= space_booking.date.strftime(DATE_FORMAT) %> <br>
                 <strong>Status:</strong> <%= space_booking.status.capitalize %>
-                <form action="/bookings/<%= space_booking.id %>" method="POST">
-                  <input type="hidden" name="_method" value="patch">
-                  <button class="preferred-action-small" type="submit" name="status" value="confirmed">Confirm Booking</button>
-                  <button class="lesser-action-small" type="submit" name="status" value="rejected">Reject Booking</button>
-                </form>
+                <% if space_booking.status == "pending" %>
+                  <form action="/bookings/<%= space_booking.id %>" method="POST">
+                    <input type="hidden" name="_method" value="patch">
+                    <button class="preferred-action-small" type="submit" name="status" value="confirmed">Confirm Booking</button>
+                    <button class="lesser-action-small" type="submit" name="status" value="rejected">Reject Booking</button>
+                  </form>
+                <% end %>
               </p>
             </section>
           <% end %>
